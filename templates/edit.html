@@ -1,0 +1,129 @@
+<html lang="en">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Sakai AutoParts</title>
+  </head>
+  <body>
+
+
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-md">
+
+        </div>
+      </nav>
+
+
+      <div class="container mt-5">
+
+        <div class="row">
+            <div class="col-md-4">
+                <h2> Welcome to Sakai AutoParts</h2>
+                <br>
+
+                <form action="/insert" method="post">
+                    {% csrf_token %}
+
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="name" name="name" required>
+                    </div>
+
+                      <div class="form-group">
+                        <input type="email" class="form-control  mt-2" placeholder="email" name="email" required>
+
+                    </div>
+
+                    <div class="form-group">
+                        <input type="number" class="form-control  mt-2" placeholder="phone" name="phone" required>
+
+                    </div>
+
+                    <div class="form-group">
+                        <input type="text" class="form-control  mt-2" placeholder=" Enter Vehicle make" name="make" required>
+
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control  mt-2" placeholder=" Enter Vehicle model" name="model" required>
+
+                    </div>
+                    <div class="form-group">
+                        <input type="number" class="form-control  mt-2" placeholder="Enter chasis number" name="chasis" required>
+
+                    </div>
+                    <div class="form-group">
+                        <input type="number" class="form-control  mt-2" placeholder="damage" name="damage" required>
+
+                    </div>
+
+                     <div class="form-group">
+                        <input type="number" class="form-control  mt-2" placeholder="insuarance Agency" name="insuarance" required>
+
+                    </div>
+
+                    <div class="d-grid gap-2">
+
+                        <button class="btn btn-success mt-2" type="submit">Insert</button>
+                    </div>
+
+                </form>
+            </div>
+
+           <table>
+
+               <tr>
+                   <th>Name</th>
+                   <th>email</th>
+                   <th>phone</th>
+                   <th>make</th>
+                   <th>model</th>
+                   <th>chasis</th>
+                   <th>damage</th>
+                   <th>insuarance</th>
+
+               {% for d in data %}
+
+               </tr>
+                   <th>{{ d.name }}</th>
+                   <th>{{ d.email }}</th>
+                   <th>{{ d.phone }}</th>
+                   <th>{{ d.make}}</th>
+                   <th>{{ d.model }}</th>
+                   <th>{{ d.chasis }}</th>
+                   <th>{{ d.damage }}</th>
+                   <th>{{ d.insuarance }}</th>
+
+               <th>
+                   <button>
+                    <button type="button" class="btn btn-outline-success"><a href="/delete/{{ d.id }}">delete</a></button>
+
+                   </button>
+
+                   <button>
+                   <button type="button" class="btn btn-outline-primary"> <a href="/update/{{ d.id }}">update</a></button>
+
+                   </button>
+               </th>
+
+
+
+
+
+               </tr>
+               {% endfor %}
+
+
+           </table>
+
+
+            </div>
+        </div>
+
+      </div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+  </body>
+
+</html>
+
