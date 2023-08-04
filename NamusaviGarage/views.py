@@ -6,15 +6,16 @@ def insertData(request):
         name = request.POST.get('name')
         email = request.POST.get('email')
         phone = request.POST.get('phone')
-        country = request.POST.get('country')
-        city = request.POST.get('city')
-        age = request.POST.get('age')
-        gender = request.POST.get('gender')
+        make = request.POST.get('make')
+        model = request.POST.get('model')
+        chasis = request.POST.get('chasis')
+        damage = request.POST.get('damage')
+        insuarance = request.POST.get('insuarance')
 
-        query = NamusaviGarage.objects.create(name=name, email=email, phone=phone, country=country, city=city, age=age, gender=gender)
+        query = NamusaviGarage.objects.create(name=name, email=email, phone=phone, make=make, model=model, chasis=chasis, damage=damage, insuarance=insuarance)
 
         query.save()
-        return redirect("/")
+    return redirect("/")
     return render(request, "index.html")
 
 def indexpage(request):
@@ -43,7 +44,7 @@ def updateData(request, id):
         edit_data.damage = damage
         edit_data.insuarance = insuarance
         edit_data.save()
-        return redirect("/")
+    return redirect("/")
 
     dta = NamusaviGarage.objects.get(id=id)
     context = {"dta": dta}
